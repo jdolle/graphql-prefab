@@ -1,0 +1,23 @@
+{
+  "name": "graphql-config-resolvers",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "author": "Jeff Dolle (jdolle@gmail.com)",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist/* && tsc"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/node": "^9.6.0",
+    "@types/ramda": "^0.25.20",
+    "rimraf": "^2.6.2",
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "graphql-resolvers": "^0.2.2",
+    "ramda": "^0.25.0",
+    "velocityjs": "^1.0.1"
+  }
+}

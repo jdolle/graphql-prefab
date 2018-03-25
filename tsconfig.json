@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "paths": {
+      "$src/*": ["./*"],
+      "$lib/*": ["./lib/*"]
+    },
+    "outDir": "./dist",
+    "target": "ES6",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "lib": [
+      "es2015",
+      "es2016",
+      "es2017",
+      "esnext.promise"
+    ],
+    "jsx": "preserve",
+    "strict": true,
+    "noUnusedLocals": true,
+    "importHelpers": false,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "inlineSources": true
+  }
+}

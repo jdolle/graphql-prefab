@@ -1,0 +1,13 @@
+{
+  "type": "Query",
+  "fields": {
+    "user": [
+      {
+        "use": "http",
+        "options": {
+          "url": "http://app.staging.acorns.io/v1/user"
+        }
+      }
+    ]
+  }
+}
