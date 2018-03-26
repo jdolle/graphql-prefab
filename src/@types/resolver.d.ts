@@ -1,4 +1,4 @@
-type OptionValue = string | number | boolean | VELOCITY_AST[] | undefined
+type OptionValue = string | number | boolean | VELOCITY_AST[] | any | undefined
 
 interface Hash {
   [key: string]: OptionValue,

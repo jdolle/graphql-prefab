@@ -1,0 +1,20 @@
+{
+  "type": "Query",
+  "fields": {
+    "acceptanceDocument": [
+      {
+        "use": "http",
+        "options": {
+          "url": "$env.BACKEND_URL/v1/acceptance_documents/$args.type"
+        }
+      },
+      {
+        "use": "pluck",
+        "options": {
+          "path": "acceptance_document"
+        }
+      },
+      { "use": "camelizeKeys" }
+    ]
+  }
+}

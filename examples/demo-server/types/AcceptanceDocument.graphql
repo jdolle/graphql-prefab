@@ -1,0 +1,21 @@
+type AcceptanceDocument {
+  acceptanceDocumentVersionUuid: ID!
+  # The name of the document
+  name: String!
+  # The type of document (arbitrary right now)
+  documentType: String!
+  # The version of the document
+  version: String!
+  # The URL to the document text
+  url: String!
+   # The name of the summary
+  summaryName: String
+  # The URL to the summary text
+  summaryUrl: String
+  # Indicates wether the app should force the user to scroll to
+  # the bottom before accepting
+  mustScrollToBottom: Boolean
+  # A string indicating a specific app feature that the acceptance
+  # of the document is required for using
+  requiredFor: String
+}

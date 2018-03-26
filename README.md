@@ -36,3 +36,11 @@ const fooResolver = (options) => (obj, args, context, info) => 'foo'
 addResolver('foo', fooResolver);
 
 ```
+
+### Demo
+
+Take a look at the [demo server](https://github.com/jdolle/graphql-json-resolvers/tree/master/examples/demo-server) to see just how easy setting up GraphQL using `graphql-config-resolvers` can be.
+
+```
+yarn demo
+```

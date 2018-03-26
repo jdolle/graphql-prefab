@@ -1,4 +1,3 @@
-import httpResolver from '../resolvers/http'
 import compileOptions from './compileOptions'
 import { getResolver } from './resolversTable'
 
@@ -7,11 +6,12 @@ import { getResolver } from './resolversTable'
  *
  * This wraps the real resolver with a step to compile the options AST
  */
-const optionsCompilerResolver = (resolver: OptionedResolverFunction, options: ResolverConfig['options']) => {
-  const wrapper: ResolverFunction = (obj, args, context, info) => {
+const optionsCompilerResolver = (resolver: OptionedResolverFunction, options: ResolverConfig['options'] = {}) => {
+  const wrapper: ResolverFunction = async (obj, args, context, info) => {
     const compiledOptions = compileOptions(options, { obj, args, context, info, env: process.env })
+    const resolveFn = resolver(compiledOptions)
 
-    return resolver(compiledOptions)
+    return await resolveFn(obj, args, context, info)
   }
 
   return wrapper
@@ -19,7 +19,6 @@ const optionsCompilerResolver = (resolver: OptionedResolverFunction, options: Re
 
 /**
  * Compiles a resolver from a config
- * TODO allow adding custom resolvers
  */
 const compileResolver = (resolverConfig: ResolverConfig): ResolverFunction => {
   const resolver = getResolver(resolverConfig.use)
@@ -28,7 +27,7 @@ const compileResolver = (resolverConfig: ResolverConfig): ResolverFunction => {
     throw new Error(`Unsupported resolver: ${resolverConfig.use}`)
   }
 
-  return optionsCompilerResolver(httpResolver, resolverConfig.options)
+  return optionsCompilerResolver(resolver, resolverConfig.options)
 }
 
 export default compileResolver

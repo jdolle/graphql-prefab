@@ -1,14 +1,14 @@
 import axios from 'axios'
 
 export interface HttpConfig extends ResolverConfig {
-  use: "http",
+  use: 'http',
   options?: {
     url?: string,
   }
 }
 
-const httpResolver = (options: HttpConfig['options']): ResolverFunction => {
-  return (obj, args, context, info) => {
+const httpResolver = (options: HttpConfig['options']): ResolverFunction =>
+  async (obj, args, context, info) => {
     if (options === undefined) {
       throw new Error('HTTP options are required')
     }
@@ -17,8 +17,9 @@ const httpResolver = (options: HttpConfig['options']): ResolverFunction => {
       throw new Error('No url')
     }
 
-    return axios(options.url)
+    const { data } = await axios(options.url)
+
+    return data
   }
-}
 
 export default httpResolver
