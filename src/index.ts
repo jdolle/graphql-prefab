@@ -10,6 +10,8 @@ import readResolversDir from './lib/readResolversDir'
 import compileResolver from './lib/compileResolver'
 import parseConfig from './lib/parseConfig'
 
+export { addResolver } from './lib/resolversTable'
+
 const RESOLVERS_DIR = process.env.RESOLVERS_DIR || path.join(__dirname, 'resolvers')
 
 /**
@@ -41,5 +43,3 @@ export const compile = (dir: string = RESOLVERS_DIR) => {
 
   return resolvers
 }
-
-compile()

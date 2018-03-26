@@ -1,5 +1,6 @@
-import httpResolver, { HttpConfig } from '../resolvers/http'
+import httpResolver from '../resolvers/http'
 import compileOptions from './compileOptions'
+import { getResolver } from './resolversTable'
 
 /**
  * The resolver must compile the options AST at runtime to provide args and context
@@ -21,13 +22,13 @@ const optionsCompilerResolver = (resolver: OptionedResolverFunction, options: Re
  * TODO allow adding custom resolvers
  */
 const compileResolver = (resolverConfig: ResolverConfig): ResolverFunction => {
-  switch (resolverConfig.use) {
-    case 'http': {
-      return optionsCompilerResolver(httpResolver, resolverConfig.options as HttpConfig['options'])
-    }
+  const resolver = getResolver(resolverConfig.use)
+
+  if (resolver === undefined) {
+    throw new Error(`Unsupported resolver: ${resolverConfig.use}`)
   }
 
-  throw new Error(`Unsupported resolver: ${resolverConfig.use}`)
+  return optionsCompilerResolver(httpResolver, resolverConfig.options)
 }
 
 export default compileResolver

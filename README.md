@@ -24,7 +24,15 @@ import { addResolveFunctionsToSchema } from 'graphql-tools';
 addResolveFunctionsToSchema(schema, compile('./resolvers'));
 ```
 
-### Test Compilation
-```
-$ yarn build && BACKEND_URL=test.com RESOLVERS_DIR=./examples node ./dist/index.js
+### Adding custom resolvers
+
+Basic Example:
+```javascript
+import { addResolver } from 'graphql-json-resolvers';
+
+const fooResolver = (options) => (obj, args, context, info) => 'foo'
+};
+
+addResolver('foo', fooResolver);
+
 ```
