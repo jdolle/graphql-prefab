@@ -16,24 +16,23 @@ See [examples](https://github.com/jdolle/graphql-json-resolvers/tree/master/exam
 
 ### Usage
 ```javascript
-import { compile } from 'graphql-json-resolvers';
-import { addResolveFunctionsToSchema } from 'graphql-tools';
+import { compile } from 'graphql-json-resolvers'
+import { addResolveFunctionsToSchema } from 'graphql-tools'
 
 ...
 
-addResolveFunctionsToSchema(schema, compile('./resolvers'));
+addResolveFunctionsToSchema(schema, compile(path.resolve(__dirname, './resolvers')))
 ```
 
 ### Adding custom resolvers
 
 Basic Example:
 ```javascript
-import { addResolver } from 'graphql-json-resolvers';
+import { addResolver } from 'graphql-json-resolvers'
 
 const fooResolver = (options) => (obj, args, context, info) => 'foo'
-};
 
-addResolver('foo', fooResolver);
+addResolver('foo', fooResolver)
 
 ```
 
