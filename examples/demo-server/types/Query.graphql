@@ -1,0 +1,5 @@
+#import AcceptanceDocument from 'AcceptanceDocument.graphql'
+
+type Query {
+  acceptanceDocument(type: String!): AcceptanceDocument
+}

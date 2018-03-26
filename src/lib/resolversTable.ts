@@ -1,5 +1,6 @@
 import camelizeKeysResolver from '../resolvers/camelizeKeys'
 import httpResolver from '../resolvers/http'
+import pluckResolver from '../resolvers/pluck'
 
 type ResolversTable = {
   [key: string]: OptionedResolverFunction,
@@ -13,3 +14,4 @@ export const getResolver = (key: string) => resolvers[key]
 
 addResolver('camelizeKeys', camelizeKeysResolver)
 addResolver('http', httpResolver)
+addResolver('pluck', pluckResolver)
