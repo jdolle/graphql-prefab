@@ -3,7 +3,7 @@ import { pathOr } from 'ramda'
 export interface PluckConfig extends ResolverConfig {
   use: 'pluck',
   options?: {
-    path?: string,
+    path?: string;
   }
 }
 
@@ -12,9 +12,8 @@ const pluckResolver = (options: PluckConfig['options']): ResolverFunction =>
     if (options === undefined || options.path === undefined) {
       throw new Error('Bad configuration')
     }
-    const data = pathOr(undefined, [options.path], obj)
 
-    return data
+    return pathOr(undefined, [options.path], obj)
   }
 
 export default pluckResolver

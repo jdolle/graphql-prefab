@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist/* && tsc",
-    "demo": "BACKEND_URL=https://backend.staging.acorns.io ts-node ./examples/demo-server/index.ts"
+    "demo": "BACKEND_URL=https://backend.staging.acorns.io ts-node ./examples/demo-server/index.ts",
+    "lint": "tslint --project tsconfig.json  \"src/**\""
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -17,6 +18,9 @@
     "graphql-yoga": "^1.6.1",
     "rimraf": "^2.6.2",
     "ts-node": "^5.0.1",
+    "tslint": "^5.9.1",
+    "tslint-consistent-codestyle": "^1.12.2",
+    "tslint-microsoft-contrib": "^5.0.3",
     "typescript": "^2.7.2"
   },
   "dependencies": {

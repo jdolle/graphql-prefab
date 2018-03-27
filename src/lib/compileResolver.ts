@@ -6,16 +6,13 @@ import { getResolver } from './resolversTable'
  *
  * This wraps the real resolver with a step to compile the options AST
  */
-const optionsCompilerResolver = (resolver: OptionedResolverFunction, options: ResolverConfig['options'] = {}) => {
-  const wrapper: ResolverFunction = async (obj, args, context, info) => {
+const optionsCompilerResolver = (resolver: OptionedResolverFunction, options: ResolverConfig['options'] = {}): ResolverFunction =>
+  async (obj, args, context, info) => {
     const compiledOptions = compileOptions(options, { obj, args, context, info, env: process.env })
     const resolveFn = resolver(compiledOptions)
 
-    return await resolveFn(obj, args, context, info)
+    return resolveFn(obj, args, context, info)
   }
-
-  return wrapper
-}
 
 /**
  * Compiles a resolver from a config
