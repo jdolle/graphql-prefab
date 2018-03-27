@@ -2,7 +2,7 @@ import camelizeKeysResolver from '../resolvers/camelizeKeys'
 import httpResolver from '../resolvers/http'
 import pluckResolver from '../resolvers/pluck'
 
-type ResolversTable = {
+interface ResolversTable {
   [key: string]: OptionedResolverFunction,
 }
 

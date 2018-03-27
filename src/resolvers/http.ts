@@ -3,7 +3,7 @@ import axios from 'axios'
 export interface HttpConfig extends ResolverConfig {
   use: 'http',
   options?: {
-    url?: string,
+    url?: string;
   }
 }
 

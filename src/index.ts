@@ -10,7 +10,8 @@ import readResolversDir from './lib/readResolversDir'
 import compileResolver from './lib/compileResolver'
 import parseConfig from './lib/parseConfig'
 
-const RESOLVERS_DIR = process.env.RESOLVERS_DIR || path.join(__dirname, 'resolvers')
+const RESOLVERS_DIR = process.env.RESOLVERS_DIR === undefined ?
+  path.join(__dirname, 'resolvers') : process.env.RESOLVERS_DIR
 
 /**
  * For every field in the fields hash, compile and combine the resolvers.
@@ -20,7 +21,7 @@ type CompileFieldsFn = (fields: TypeConfig['fields']) => { [field: string]: Reso
 const compileFields: CompileFieldsFn = mapObjIndexed((resolvers: ResolverConfig[]) =>
   pipeResolvers(
     ...map(compileResolver, resolvers),
-  )
+  ),
 )
 
 export const compile = (dir: string = RESOLVERS_DIR) => {
@@ -29,7 +30,7 @@ export const compile = (dir: string = RESOLVERS_DIR) => {
   readResolversDir(dir).forEach((filePath: string) => {
     const typeConfig = parseConfig(filePath)
     const defaultTypeName = path.parse(filePath).name
-    const typeName = typeConfig.type || defaultTypeName
+    const typeName = typeConfig.typeName === undefined ? defaultTypeName : typeConfig.typeName
 
     resolvers = {
       ...resolvers,

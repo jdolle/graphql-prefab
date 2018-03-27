@@ -4,15 +4,15 @@ interface Hash {
   [key: string]: OptionValue,
 }
 
-type ResolverConfig = {
+interface ResolverConfig {
   use: string,
   options?: Hash,
 }
 
-type TypeConfig = {
-  type?: string,
+interface TypeConfig {
+  typeName?: string,
   fields: {
-    [fieldName: string]: ResolverConfig[],
+    [fieldName: string]: ResolverConfig[];
   }
 }
 

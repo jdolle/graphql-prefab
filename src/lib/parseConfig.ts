@@ -18,6 +18,7 @@ const parseResolver = (resolver: ResolverConfig) => {
   if (resolver.options !== undefined) {
     resolver.options = parseOptions(resolver.options)
   }
+
   return resolver
 }
 

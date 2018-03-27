@@ -4,10 +4,11 @@ declare module 'graphql-resolvers' {
   const out: {
     pipeResolvers(
       ...resolvers: ResolverFunction[],
-    ): ResolverFunction,
+    ): ResolverFunction;
+
     combineResolvers(
       ...resolvers: ResolverFunction[],
-    ): ResolverFunction
+    ): ResolverFunction;
   }
-  export = out;
+  export = out
 }
