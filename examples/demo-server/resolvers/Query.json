@@ -5,13 +5,17 @@
       {
         "use": "http",
         "options": {
-          "url": "$env.BACKEND_URL/v1/acceptance_documents/$args.type"
+          "url": "$env.BACKEND_URL/v1/acceptance_documents/$args.type",
+          "timeout": 5000
         }
       },
       {
-        "use": "pluck",
+        "use": "ramda",
         "options": {
-          "path": "acceptance_document"
+          "fn": "path",
+          "args": [
+            ["acceptance_document"]
+          ]
         }
       },
       { "use": "camelizeKeys" }
