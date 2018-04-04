@@ -18,7 +18,7 @@ const RESOLVERS_DIR = process.env.RESOLVERS_DIR === undefined ?
  */
 type CompileFieldsFn = (fields: TypeConfig['fields']) => { [field: string]: ResolverFunction }
 
-const compileFields: CompileFieldsFn = mapObjIndexed((resolvers: ResolverConfig[]) =>
+const compileFields: CompileFieldsFn = mapObjIndexed((resolvers: ParsedResolverConfig[]) =>
   pipeResolvers(
     ...map(compileResolver, resolvers),
   ),
@@ -37,8 +37,6 @@ export const compile = (dir: string = RESOLVERS_DIR) => {
       [typeName]: compileFields(typeConfig.fields),
     }
   })
-
-  console.info('%o', resolvers)
 
   return resolvers
 }
