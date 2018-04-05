@@ -1,4 +1,4 @@
-export default (obj: any, value: any, path: string[]) => {
+export default (obj: any, value: any, path: (string | number)[]) => {
   let current = obj
   let i: number
 

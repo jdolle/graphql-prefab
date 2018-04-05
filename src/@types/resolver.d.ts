@@ -7,7 +7,7 @@ interface ParsedResolverConfig extends ResolverConfig {
   options: {
     [key: string]: any;
   },
-  parsedOptions: string[][],
+  parsedOptions: (string | number)[][],
 }
 
 interface TypeConfig {
