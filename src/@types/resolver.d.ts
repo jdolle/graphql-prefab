@@ -1,10 +1,10 @@
 interface ResolverConfig {
   use: string,
-  options: any,
+  options?: any,
 }
 
 interface ParsedResolverConfig extends ResolverConfig {
-  options: {
+  options?: {
     [key: string]: any;
   },
   parsedOptions: (string | number)[][],
@@ -26,4 +26,4 @@ interface ParsedTypeConfig {
 
 type ResolverFunction = (root?: any, args?: any, context?: any, info?: any) => any
 
-type OptionedResolverFunction = (options: ResolverConfig['options']) => ResolverFunction
+type OptionedResolverFunction = (options?: ResolverConfig['options']) => ResolverFunction
