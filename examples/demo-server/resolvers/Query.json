@@ -19,6 +19,17 @@
         }
       },
       { "use": "camelizeKeys" }
+    ],
+    "allToggles": [
+      {
+        "use": "postgres",
+        "options": {
+          "query": {
+            "text": "SELECT * FROM features"
+          }
+        }
+      },
+      { "use": "camelizeKeys" }
     ]
   }
 }

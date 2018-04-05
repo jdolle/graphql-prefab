@@ -1,6 +1,7 @@
 import camelizeKeysResolver from '../resolvers/camelizeKeys'
 import httpResolver from '../resolvers/http'
 import ramdaResolver from '../resolvers/ramda'
+import pgResolver from '../resolvers/postgres'
 
 interface ResolversTable {
   [key: string]: OptionedResolverFunction,
@@ -15,3 +16,4 @@ export const getResolver = (key: string) => resolvers[key]
 addResolver('camelizeKeys', camelizeKeysResolver)
 addResolver('http', httpResolver)
 addResolver('ramda', ramdaResolver)
+addResolver('postgres', pgResolver)
