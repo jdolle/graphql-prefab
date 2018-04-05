@@ -7,16 +7,20 @@
   "scripts": {
     "build": "rm -rf dist/* && tsc",
     "demo": "BACKEND_URL=https://backend.staging.acorns.io ts-node-dev --respawn --type-check ./examples/demo-server/index.ts",
-    "lint": "tslint --project tsconfig.json  \"src/**\""
+    "lint": "tslint --project tsconfig.json  \"src/**\"",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/humps": "^1.1.2",
+    "@types/jest": "^22.2.2",
     "@types/node": "^9.6.0",
     "@types/ramda": "^0.25.20",
     "graphql-import": "^0.5.0",
     "graphql-yoga": "^1.6.1",
+    "jest": "^22.4.3",
     "rimraf": "^2.6.2",
+    "ts-jest": "^22.4.2",
     "ts-node-dev": "^1.0.0-pre.18",
     "tslint": "^5.9.1",
     "tslint-consistent-codestyle": "^1.12.2",
@@ -29,5 +33,28 @@
     "humps": "^2.0.1",
     "ramda": "^0.25.0",
     "velocityjs": "^1.0.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.d.{ts,tsx}"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleDirectories": [
+      "node_modules",
+      "./src"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

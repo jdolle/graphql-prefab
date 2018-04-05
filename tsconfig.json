@@ -26,5 +26,11 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "inlineSources": true
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "coverage",
+    "dist",
+    "examples"
+  ]
 }
