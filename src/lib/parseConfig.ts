@@ -2,23 +2,36 @@ import { readFileSync } from 'fs'
 import { mapObjIndexed } from 'ramda'
 import Velocity from 'velocityjs'
 import isString from './isString'
+import isObject from './isObject'
+
+/**
+ * Converts options to VELOCITY_AST[] to be compiled later.
+ * @arg value object, array, or primitive that is being parsed
+ * @arg path current path of the value within the initial parsed value
+ * @arg outPaths an array that each velocity parsed value pushes its path on to
+ */
+const parseOptions = (value: any, path: (string | number)[], outPaths: (string | number)[][]): any => {
+  if (isObject(value)) {
+    return mapObjIndexed((x: any, key: string) =>
+      parseOptions(x, [...path, key], outPaths),
+    )(value)
+  } else if (Array.isArray(value)) {
+    return value.map((x: any, index: number) =>
+      parseOptions(x, [...path, index], outPaths),
+    )
+  } else if (isString(value)) {
+    outPaths.push(path)
+
+    return Velocity.parse(value)
+  }
+
+  return value
+}
 
 const parseResolver = (resolver: ResolverConfig): ParsedResolverConfig => {
-  const parsedOptions: string[][] = []
+  const parsedOptions: (string | number)[][] = []
 
-  /**
-   * Converts options to VELOCITY_AST[] to be compiled later.
-   */
-  const parseOptions = mapObjIndexed((value: any, key: string) => {
-    if (isString(value)) {
-      parsedOptions.push([key])
-
-      return Velocity.parse(value)
-    }
-
-    return value
-  })
-  const options = parseOptions(resolver.options)
+  const options = parseOptions(resolver.options, [], parsedOptions)
 
   return {
     use: resolver.use,
