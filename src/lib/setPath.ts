@@ -1,15 +1,21 @@
+import shallow from './shallow'
+
 export default (obj: any, value: any, path: (string | number)[]) => {
-  let current: any = obj
+  const root: any = shallow(obj)
+  let current: any = root
   let i: number
 
   for (i = 0; i < path.length - 1; i += 1) {
-    if (!current.hasOwnProperty(path[i])) {
+    const property = path[i]
+
+    if (!current.hasOwnProperty(property)) {
       throw new Error(`Can't set path ${path.toString()} on ${obj.toString()}`)
     }
-    current = current[path[i]] as any
+    current[property] = shallow(current[property] as any)
+    current = current[property]
   }
 
-  obj[path[i]] = value as any
+  current[path[i]] = value as any
 
-  return obj
+  return root
 }

@@ -5,15 +5,13 @@ import { path } from 'ramda'
 import setPath from './setPath'
 
 const compileOptions = (options: ParsedResolverConfig['options'], parsedOptions: ParsedResolverConfig['parsedOptions'], context?: {}) => {
-  const compiledOptions = {
-    ...options,
-  }
+  let compiledOptions = options
 
   parsedOptions.forEach(
     (parsedPath) => {
       const value = path(parsedPath, options) as VELOCITY_AST[]
       const compiled = (new Velocity.Compile(value)).render(context)
-      setPath(compiledOptions, compiled, parsedPath)
+      compiledOptions = setPath(compiledOptions, compiled, parsedPath)
     },
   )
 
