@@ -1,7 +1,7 @@
 import { Pool, QueryConfig } from 'pg'
 
 export interface PGConfig extends ResolverConfig {
-  use: 'pg',
+  use: 'postgres',
   options: {
     query: QueryConfig;
   }
