@@ -1,4 +1,5 @@
-# graphql-json-resolvers
+# graphql-json-resolvers [![Test Coverage](https://api.codeclimate.com/v1/badges/42efb0dec26d3bcedbcd/test_coverage)](https://codeclimate.com/github/jdolle/graphql-json-resolvers/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/42efb0dec26d3bcedbcd/maintainability)](https://codeclimate.com/github/jdolle/graphql-json-resolvers/maintainability)
+
 Configure resolvers through JSON configuration rather than code
 
 ## Configuring Resolvers
