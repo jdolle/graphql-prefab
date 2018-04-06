@@ -1,0 +1,101 @@
+version: 2
+
+references:
+  container_config: &container_config
+    docker:
+      - image: circleci/node:9.10
+    environment:
+      TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+
+  workspace_root: &workspace_root
+    /tmp/workspace
+
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace_root
+
+  restore_node_modules: &restore_node_modules
+    run:
+      name: Response npm dependencies from workspace
+      command: mv /tmp/workspace/node_modules .
+
+  modules_cache_key: &modules_cache_key
+    key: yarn-cache-{{ checksum "yarn.lock" }}
+
+jobs:
+  dependencies:
+    <<: *container_config
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *modules_cache_key
+      - run:
+          name: Install dependencies
+          command: |
+            if [ ! -d node_modules ]; then
+              yarn
+            fi
+      - save_cache:
+          <<: *modules_cache_key
+          paths:
+            - node_modules
+      - run:
+          name: Move dependencies to workspace
+          command: mv node_modules /tmp/workspace/
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - node_modules
+
+  test:
+    <<: *container_config
+    steps:
+      - checkout
+      - *attach_workspace
+      - *restore_node_modules
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          name: Run tests
+          command: |
+            ./cc-test-reporter before-build
+            yarn test:ci
+            ./cc-test-reporter after-build
+
+  lint:
+    <<: *container_config
+    steps:
+      - checkout
+      - *attach_workspace
+      - *restore_node_modules
+      - run:
+          name: Lint
+          command: yarn lint
+
+  build:
+    <<: *container_config
+    steps:
+      - checkout
+      - *attach_workspace
+      - *restore_node_modules
+      - run:
+          name: Compile the App
+          command: yarn build
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - dependencies
+      - test:
+          requires:
+            - dependencies
+      - lint:
+          requires:
+            - dependencies
+      - build:
+          requires:
+            - dependencies
