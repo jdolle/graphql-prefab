@@ -20,13 +20,14 @@ references:
       command: mv /tmp/workspace/node_modules .
 
   modules_cache_key: &modules_cache_key
-    key: yarn-cache-{{ checksum "yarn.lock" }}
+    key: yarnlock-cache-{{ checksum "yarn.lock" }}
 
 jobs:
   dependencies:
     <<: *container_config
     steps:
       - checkout
+      - *attach_workspace
       - restore_cache:
           <<: *modules_cache_key
       - run:

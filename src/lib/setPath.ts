@@ -11,11 +11,11 @@ export default (obj: any, value: any, path: (string | number)[]) => {
     if (!current.hasOwnProperty(property)) {
       throw new Error(`Can't set path ${path.toString()} on ${obj.toString()}`)
     }
-    current[property] = shallow(current[property] as any)
+    current[property] = shallow(current[property])
     current = current[property]
   }
 
-  current[path[i]] = value as any
+  current[path[i]] = value
 
   return root
 }

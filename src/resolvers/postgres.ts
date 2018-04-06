@@ -8,10 +8,10 @@ export interface PGConfig extends ResolverConfig {
 }
 
 let _client: Pool | undefined
-const getClient = () => {
+const getClient = async () => {
   if (_client === undefined) {
     _client = new Pool()
-    _client.connect()
+    await _client.connect()
   }
 
   return _client
@@ -19,7 +19,8 @@ const getClient = () => {
 
 const pgResolver = (options: PGConfig['options']): ResolverFunction => {
   return async (obj, args, context, info) => {
-    const { rows } = await getClient().query(options.query)
+    const client = await getClient()
+    const { rows } = await client.query(options.query)
 
     return rows
   }
