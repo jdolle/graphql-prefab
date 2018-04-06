@@ -1,0 +1,8 @@
+type Toggle {
+  id: ID!
+  name: String!
+  projectString: String!
+  createdAt: String!
+  updatedAt: String
+  ruleId: ID!
+}

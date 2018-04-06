@@ -1,5 +1,7 @@
 #import AcceptanceDocument from 'AcceptanceDocument.graphql'
+#import Toggle from 'Toggle.graphql'
 
 type Query {
   acceptanceDocument(type: String!): AcceptanceDocument
+  allToggles: [Toggle]
 }
