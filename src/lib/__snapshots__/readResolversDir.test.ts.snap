@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#readResolversDir gets all json files in the directory 1`] = `
+Array [
+  "/Users/jeffdolle/projects/graphql-config-resolvers/examples/demo-server/resolvers/Query.json",
+]
+`;

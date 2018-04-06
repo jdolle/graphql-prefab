@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#parseConfig takes in a valid config path and parses it 1`] = `
+Object {
+  "fields": Object {
+    "acceptanceDocument": Array [
+      Object {
+        "options": Object {
+          "timeout": 5000,
+          "url": Array [
+            Object {
+              "id": "env",
+              "leader": "$",
+              "path": Array [
+                Object {
+                  "id": "BACKEND_URL",
+                  "type": "property",
+                },
+              ],
+              "pos": Object {
+                "first_column": 0,
+                "first_line": 1,
+                "last_column": 16,
+                "last_line": 1,
+              },
+              "prue": true,
+              "type": "references",
+            },
+            "/",
+            "v1/acceptance_documents/",
+            Object {
+              "id": "args",
+              "leader": "$",
+              "path": Array [
+                Object {
+                  "id": "type",
+                  "type": "property",
+                },
+              ],
+              "pos": Object {
+                "first_column": 41,
+                "first_line": 1,
+                "last_column": 51,
+                "last_line": 1,
+              },
+              "prue": true,
+              "type": "references",
+            },
+          ],
+        },
+        "parsedOptions": Array [
+          Array [
+            "url",
+          ],
+        ],
+        "use": "http",
+      },
+      Object {
+        "options": Object {
+          "args": Array [
+            Array [
+              Array [
+                "acceptance_document",
+              ],
+            ],
+          ],
+          "fn": Array [
+            "path",
+          ],
+        },
+        "parsedOptions": Array [
+          Array [
+            "fn",
+          ],
+          Array [
+            "args",
+            0,
+            0,
+          ],
+        ],
+        "use": "ramda",
+      },
+      Object {
+        "options": undefined,
+        "parsedOptions": Array [],
+        "use": "camelizeKeys",
+      },
+    ],
+    "allToggles": Array [
+      Object {
+        "options": Object {
+          "query": Object {
+            "text": Array [
+              "SELECT * FROM features",
+            ],
+          },
+        },
+        "parsedOptions": Array [
+          Array [
+            "query",
+            "text",
+          ],
+        ],
+        "use": "postgres",
+      },
+      Object {
+        "options": undefined,
+        "parsedOptions": Array [],
+        "use": "camelizeKeys",
+      },
+    ],
+  },
+  "typeName": "Query",
+}
+`;
