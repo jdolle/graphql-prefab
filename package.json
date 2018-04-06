@@ -1,6 +1,6 @@
 {
   "name": "graphql-json-resolvers",
-  "description": "Reduce prevent resolver boilerplate by configuring resolvers through JSON",
+  "description": "Reduce resolver boilerplate by configuring resolvers through JSON",
   "version": "0.0.1",
   "main": "dist/index.js",
   "keywords": ["graphql", "resolver", "apollo", "json", "config", "gql"],
