@@ -21,7 +21,7 @@ references:
       command: mv /tmp/workspace/node_modules .
 
   modules_cache_key: &modules_cache_key
-    key: yarn-cache-{{ checksum "yarn.lock" }}
+    key: yarnlock-cache-{{ checksum "yarn.lock" }}
 
 jobs:
   dependencies:
@@ -42,7 +42,7 @@ jobs:
             - ~/project/node_modules
       - run:
           name: Move dependencies to workspace
-          command: mv node_modules /tmp/workspace/
+          command: mv ~/project/node_modules /tmp/workspace/
       - persist_to_workspace:
           root: *workspace_root
           paths:
