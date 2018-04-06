@@ -2,8 +2,8 @@ import { Pool, QueryConfig } from 'pg'
 
 export interface PGConfig extends ResolverConfig {
   use: 'postgres',
-  options: {
-    query: QueryConfig;
+  options?: {
+    query?: QueryConfig;
   }
 }
 
@@ -17,8 +17,12 @@ const getClient = async () => {
   return _client
 }
 
-const pgResolver = (options: PGConfig['options']): ResolverFunction => {
+const pgResolver = (options?: PGConfig['options']): ResolverFunction => {
   return async (obj, args, context, info) => {
+    if (options === undefined || options.query === undefined) {
+      throw new Error(`'query' option required`)
+    }
+
     const client = await getClient()
     const { rows } = await client.query(options.query)
 

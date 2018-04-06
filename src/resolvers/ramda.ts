@@ -8,7 +8,7 @@ export interface RamdaConfig extends ResolverConfig {
   }
 }
 
-const ramdaResolver = (options: RamdaConfig['options']): ResolverFunction => {
+const ramdaResolver = (options?: RamdaConfig['options']): ResolverFunction => {
   return (obj, args, context, info) => {
     if (options === undefined || options.fn === undefined || R[options.fn] === undefined) {
       throw new Error('Bad configuration')

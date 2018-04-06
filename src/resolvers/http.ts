@@ -3,20 +3,20 @@ import axios, { AxiosRequestConfig } from 'axios'
 export interface HttpConfig extends ResolverConfig {
   use: 'http',
   options: {
-    method: AxiosRequestConfig['method'];
-    responseType: AxiosRequestConfig['responseType'];
-    url: AxiosRequestConfig['url'];
+    method?: AxiosRequestConfig['method'];
+    responseType?: AxiosRequestConfig['responseType'];
+    url?: AxiosRequestConfig['url'];
     headers?: AxiosRequestConfig['headers'];
     data?: AxiosRequestConfig['data'];
     params?: AxiosRequestConfig['params'];
-    timeout: AxiosRequestConfig['timeout'];
-    baseURL: AxiosRequestConfig['baseURL'];
-    withCredentials: AxiosRequestConfig['withCredentials'];
-    proxy: AxiosRequestConfig['proxy'];
-    maxRedirects: AxiosRequestConfig['maxRedirects'];
-    maxContentLength: AxiosRequestConfig['maxContentLength'];
-    xsrfCookieName: AxiosRequestConfig['xsrfCookieName'];
-    xsrfHeaderName: AxiosRequestConfig['xsrfHeaderName'];
+    timeout?: AxiosRequestConfig['timeout'];
+    baseURL?: AxiosRequestConfig['baseURL'];
+    withCredentials?: AxiosRequestConfig['withCredentials'];
+    proxy?: AxiosRequestConfig['proxy'];
+    maxRedirects?: AxiosRequestConfig['maxRedirects'];
+    maxContentLength?: AxiosRequestConfig['maxContentLength'];
+    xsrfCookieName?: AxiosRequestConfig['xsrfCookieName'];
+    xsrfHeaderName?: AxiosRequestConfig['xsrfHeaderName'];
   }
 }
 
@@ -34,7 +34,7 @@ export interface HttpConfig extends ResolverConfig {
 // httpsAgent?: any;
 // cancelToken?: CancelToken;
 
-const httpResolver = (options: HttpConfig['options']): ResolverFunction => {
+const httpResolver = (options?: HttpConfig['options']): ResolverFunction => {
   if (options === undefined) {
     throw new Error('HTTP options are required')
   }
