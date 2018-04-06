@@ -7,7 +7,7 @@ Resolver `options` are written in [Velocity](http://velocity.apache.org/engine/1
 ```
 $obj
 $args
-$context
+$ctx
 $info
 $env = process.env
 ```
