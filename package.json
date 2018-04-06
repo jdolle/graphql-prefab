@@ -1,7 +1,13 @@
 {
   "name": "graphql-json-resolvers",
+  "description": "Reduce prevent resolver boilerplate by configuring resolvers through JSON",
   "version": "0.0.1",
   "main": "dist/index.js",
+  "keywords": ["graphql", "resolver", "apollo", "json", "config", "gql"],
+  "repository": {
+    "type" : "git",
+    "url" : "github.com/jdolle/graphql-json-resolvers"
+  },
   "author": "Jeff Dolle (jdolle@gmail.com)",
   "license": "MIT",
   "scripts": {
