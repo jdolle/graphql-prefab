@@ -1,5 +1,5 @@
 {
-  "name": "graphql-config-resolvers",
+  "name": "graphql-json-resolvers",
   "version": "0.0.1",
   "main": "dist/index.js",
   "author": "Jeff Dolle (jdolle@gmail.com)",
