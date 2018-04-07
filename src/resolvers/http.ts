@@ -35,15 +35,11 @@ export interface HttpConfig extends ResolverConfig {
 // cancelToken?: CancelToken;
 
 const httpResolver = (options?: HttpConfig['options']): ResolverFunction => {
-  if (options === undefined) {
-    throw new Error('HTTP options are required')
-  }
-
-  if (options.url === undefined) {
-    throw new Error('No url')
-  }
-
   return async (obj, args, context, info) => {
+    if (options === undefined || options.url === undefined) {
+      throw new Error('url required')
+    }
+
     const { data } = await axios(options)
 
     return data

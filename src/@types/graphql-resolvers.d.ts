@@ -1,5 +1,5 @@
 declare module 'graphql-resolvers' {
-  export type ResolverFunction = (root: any, args: any, context: any) => any
+  type ResolverFunction = (root: any, args: any, context: any) => any
 
   const out: {
     pipeResolvers(
@@ -10,5 +10,6 @@ declare module 'graphql-resolvers' {
       ...resolvers: ResolverFunction[],
     ): ResolverFunction;
   }
+
   export = out
 }
