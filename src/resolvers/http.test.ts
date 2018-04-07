@@ -8,14 +8,13 @@ it('#httpResolver throws if url is undefined', () => {
 
 it('#httpResolver calls axios', (done) => {
   moxios.withMock(() => {
-    moxios.stubRequest('/example', {
-      response: { data: ['foo'] },
-    })
-    httpResolver({ url: '/example' })()
+    const result = httpResolver({ url: '/example' })()
 
-    moxios.wait(() => {
+    moxios.wait(async () => {
       const request = moxios.requests.mostRecent()
+      await request.respondWith({ response: ['foo'] })
       expect(request.url).toBe('/example')
+      expect(result).resolves.toEqual(['foo'])
       done()
     })
   })
