@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#httpResolver throws if url is undefined 1`] = `[Error: url required]`;
+
+exports[`#httpResolver throws if url is undefined 2`] = `[Error: url required]`;

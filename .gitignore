@@ -60,3 +60,6 @@ typings/
 
 # built js
 dist/
+
+# Jest cache
+jestCache/
