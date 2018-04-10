@@ -1,5 +1,9 @@
 {
 	"name": "graphql-prefab",
+	"private": true,
+	"workspaces": [
+    "packages/*"
+  ],
 	"repository": {
     "type": "git",
     "url": "github.com/jdolle/graphql-prefab"

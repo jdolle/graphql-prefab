@@ -14,37 +14,47 @@ references:
     attach_workspace:
       at: *workspace_root
 
+  restore_node_modules: &restore_node_modules
+    run:
+      name: Response npm dependencies from workspace
+      command: mv /tmp/workspace/node_modules .
+
   modules_cache_key: &modules_cache_key
     key: v1-cache-{{ checksum "yarn.lock" }}
-
-  bootstrap: &bootstrap
-    restore_cache:
-      key: v1-cache-{{ checksum "yarn.lock" }}
-    run:
-      name: Install dependencies
-      command: |
-        yarn
-        yarn dependencies
-    save_cache:
-      key: v1-cache-{{ checksum "yarn.lock" }}
-      paths:
-        - node_modules
-        - packages/*/node_modules
 
 jobs:
   dependencies:
     <<: *container_config
     steps:
       - checkout
-      - *bootstrap
+      - *attach_workspace
+      - restore_cache:
+          <<: *modules_cache_key
+      - run:
+        name: Install dependencies
+        command: |
+          if [ ! -d node_modules ]; then
+            yarn
+            yarn dependencies
+          fi
+      - save_cache:
+        <<: *modules_cache_key
+        paths:
+          - node_modules
+      - run:
+         name: Move dependencies to workspace
+         command: mv node_modules /tmp/workspace/
+      - persist_to_workspace:
+           root: *workspace_root
+           paths:
+             - node_modules
 
   test:
     <<: *container_config
     steps:
       - checkout
       - *attach_workspace
-      - restore_cache:
-          <<: *modules_cache_key
+      - *restore_node_modules
       - run:
           name: Setup Code Climate test-reporter
           command: |
@@ -62,8 +72,7 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - restore_cache:
-          <<: *modules_cache_key
+      - *restore_node_modules
       - run:
           name: Lint
           command: yarn lint
@@ -73,8 +82,7 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - restore_cache:
-          <<: *modules_cache_key
+      - *restore_node_modules
       - run:
           name: Compile the App
           command: yarn build
