@@ -14,11 +14,6 @@ references:
     attach_workspace:
       at: *workspace_root
 
-  restore_node_modules: &restore_node_modules
-    run:
-      name: Response npm dependencies from workspace
-      command: mv /tmp/workspace/node_modules .
-
   modules_cache_key: &modules_cache_key
     key: yarnlock-cache-{{ checksum "yarn.lock" }}
 
@@ -35,16 +30,10 @@ jobs:
           command: |
             if [ ! -d node_modules ]; then
               yarn
+              yarn dependencies
             fi
       - save_cache:
           <<: *modules_cache_key
-          paths:
-            - node_modules
-      - run:
-          name: Move dependencies to workspace
-          command: mv node_modules /tmp/workspace/
-      - persist_to_workspace:
-          root: *workspace_root
           paths:
             - node_modules
 
@@ -53,7 +42,8 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - *restore_node_modules
+      - restore_cache:
+          <<: *modules_cache_key
       - run:
           name: Setup Code Climate test-reporter
           command: |
@@ -71,7 +61,8 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - *restore_node_modules
+      - restore_cache:
+          <<: *modules_cache_key
       - run:
           name: Lint
           command: yarn lint
@@ -81,7 +72,8 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - *restore_node_modules
+      - restore_cache:
+          <<: *modules_cache_key
       - run:
           name: Compile the App
           command: yarn build
