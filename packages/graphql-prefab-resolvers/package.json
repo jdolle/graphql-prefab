@@ -18,7 +18,6 @@
   "author": "Jeff Dolle (jdolle@gmail.com)",
   "license": "MIT",
   "scripts": {
-    "dependencies": "lerna bootstrap",
     "build": "rm -rf dist/* && tsc",
     "demo": "BACKEND_URL=https://backend.staging.acorns.io ts-node-dev --respawn --type-check ./examples/demo-server/index.ts",
     "lint": "tslint --project tsconfig.json --format stylish \"src/**\"",
