@@ -31,23 +31,23 @@ jobs:
       - restore_cache:
           <<: *modules_cache_key
       - run:
-        name: Install dependencies
-        command: |
-          if [ ! -d node_modules ]; then
-            yarn
-            yarn dependencies
-          fi
+          name: Install dependencies
+          command: |
+            if [ ! -d node_modules ]; then
+              yarn
+              yarn dependencies
+            fi
       - save_cache:
-        <<: *modules_cache_key
-        paths:
-          - node_modules
+          <<: *modules_cache_key
+          paths:
+            - node_modules
       - run:
-         name: Move dependencies to workspace
-         command: mv node_modules /tmp/workspace/
+          name: Move dependencies to workspace
+          command: mv node_modules /tmp/workspace/
       - persist_to_workspace:
-           root: *workspace_root
-           paths:
-             - node_modules
+          root: *workspace_root
+          paths:
+            - node_modules
 
   test:
     <<: *container_config
