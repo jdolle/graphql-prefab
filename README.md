@@ -1,6 +1,4 @@
-# graphql-json-resolvers [![Test Coverage](https://api.codeclimate.com/v1/badges/42efb0dec26d3bcedbcd/test_coverage)](https://codeclimate.com/github/jdolle/graphql-json-resolvers/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/42efb0dec26d3bcedbcd/maintainability)](https://codeclimate.com/github/jdolle/graphql-json-resolvers/maintainability)
-
-Configure resolvers through JSON configuration rather than code
+# graphql-prefab [![Test Coverage](https://api.codeclimate.com/v1/badges/da06c7682572accb0831/test_coverage)](https://codeclimate.com/github/jdolle/graphql-prefab/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/da06c7682572accb0831/maintainability)](https://codeclimate.com/github/jdolle/graphql-prefab/maintainability)
 
 ## Configuring Resolvers
 
@@ -13,12 +11,12 @@ $info
 $env = process.env
 ```
 
-See [examples](https://github.com/jdolle/graphql-json-resolvers/tree/master/examples) for usage examples.
+See [examples](https://github.com/jdolle/graphql-prefab/tree/master/examples) for usage examples.
 
 
 ## Usage
 ```javascript
-import { compile } from 'graphql-json-resolvers'
+import { compile } from 'graphql-prefab'
 import { addResolveFunctionsToSchema } from 'graphql-tools'
 
 ...
@@ -29,7 +27,7 @@ addResolveFunctionsToSchema(schema, compile(path.resolve(__dirname, './resolvers
 
 ## Standard resolvers
 
-Out of the box, `graphql-json-resolvers` includes several useful resolvers.
+Out of the box, `graphql-prefab` includes several useful resolvers.
 
 ### camelizeKeys
 
@@ -108,7 +106,7 @@ args
 
 Basic Example:
 ```javascript
-import { addResolver } from 'graphql-json-resolvers'
+import { addResolver } from 'graphql-prefab'
 
 const fooResolver = (options) => (obj, args, context, info) => 'foo'
 
@@ -118,7 +116,7 @@ addResolver('foo', fooResolver)
 
 ### Demo
 
-Take a look at the [demo server](https://github.com/jdolle/graphql-json-resolvers/tree/master/examples/demo-server) to see just how easy setting up GraphQL using `graphql-json-resolvers` can be.
+Take a look at the [demo server](https://github.com/jdolle/graphql-prefab/tree/master/examples/demo-server) to see just how easy setting up GraphQL using `graphql-prefab` can be.
 
 ```
 yarn demo
