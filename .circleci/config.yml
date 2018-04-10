@@ -15,26 +15,28 @@ references:
       at: *workspace_root
 
   modules_cache_key: &modules_cache_key
-    key: yarn-cache-{{ checksum "yarn.lock" }}
+    key: v1-cache-{{ checksum "yarn.lock" }}
+
+  bootstrap: &bootstrap
+    restore_cache:
+      <<: *modules_cache_key
+    run:
+      name: Install dependencies
+      command: |
+        yarn
+        yarn dependencies
+    save_cache:
+      <<: *modules_cache_key
+      paths:
+        - node_modules
+        - packages/*/node_modules
 
 jobs:
   dependencies:
     <<: *container_config
     steps:
       - checkout
-      - *attach_workspace
-      - restore_cache:
-          <<: *modules_cache_key
-      - run:
-          name: Install dependencies
-          command: |
-            yarn
-            yarn dependencies
-      - save_cache:
-          <<: *modules_cache_key
-          paths:
-            - node_modules
-            - packages/*/node_modules
+      - *bootstrap
 
   test:
     <<: *container_config
