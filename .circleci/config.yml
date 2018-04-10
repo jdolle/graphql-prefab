@@ -15,7 +15,7 @@ references:
       at: *workspace_root
 
   modules_cache_key: &modules_cache_key
-    key: yarnlock-cache-{{ checksum "yarn.lock" }}
+    key: yarn-cache-{{ checksum "yarn.lock" }}
 
 jobs:
   dependencies:
@@ -34,6 +34,7 @@ jobs:
           <<: *modules_cache_key
           paths:
             - node_modules
+            - packages/*/node_modules
 
   test:
     <<: *container_config
@@ -51,7 +52,7 @@ jobs:
           name: Run tests
           command: |
             ./cc-test-reporter before-build
-            yarn test:ci
+            yarn test
             ./cc-test-reporter after-build
 
   lint:
