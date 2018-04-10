@@ -19,16 +19,14 @@ references:
 
   bootstrap: &bootstrap
     restore_cache:
-      keys:
-        - v1-cache-{{ checksum "yarn.lock" }}
+      key: v1-cache-{{ checksum "yarn.lock" }}
     run:
       name: Install dependencies
       command: |
         yarn
         yarn dependencies
     save_cache:
-      keys:
-        - v1-cache-{{ checksum "yarn.lock" }}
+      key: v1-cache-{{ checksum "yarn.lock" }}
       paths:
         - node_modules
         - packages/*/node_modules
