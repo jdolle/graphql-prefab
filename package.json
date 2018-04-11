@@ -14,7 +14,7 @@
 		"lerna": "^2.10.1"
 	},
 	"scripts": {
-		"dependencies": "lerna bootstrap",
+		"dependencies": "lerna exec -- yarn && lerna bootstrap",
 		"test": "lerna run test",
 		"lint": "lerna run lint",
 		"build": "lerna run build"
