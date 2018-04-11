@@ -6,6 +6,7 @@ references:
       - image: circleci/node:9.10
     environment:
       TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+      REPORTER_CACHE_TIMESTAMP: $(echo date +"%Y%m")
 
   workspace_root: &workspace_root
     /tmp/workspace
@@ -23,7 +24,7 @@ references:
     key: v1-cache-{{ checksum "yarn.lock" }}
 
   reporter_cache_key: &reporter_cache_key
-    key: v1-reporter-{{ date +"%Y%m" }}
+    key: v1-reporter-{{ .Environment.REPORTER_CACHE_TIMESTAMP }}
 
 jobs:
   dependencies:
