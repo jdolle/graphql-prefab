@@ -60,6 +60,14 @@
       "jsx",
       "json",
       "node"
-    ]
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 95,
+        "lines": 95,
+        "statements": 80
+      }
+    }
   }
 }
