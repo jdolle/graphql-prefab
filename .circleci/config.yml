@@ -22,6 +22,9 @@ references:
   modules_cache_key: &modules_cache_key
     key: v1-cache-{{ checksum "yarn.lock" }}
 
+  reporter_cache_key: &reporter_cache_key
+    key: v1-reporter-{{ date +"%Y%m" }}
+
 jobs:
   dependencies:
     <<: *container_config
@@ -55,17 +58,34 @@ jobs:
       - checkout
       - *attach_workspace
       - *restore_node_modules
+      - restore_cache:
+          <<: *reporter_cache_key
       - run:
           name: Setup Code Climate test-reporter
           command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
+            if [ ! -f cc-test-reporter ]; then
+              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+              chmod +x ./cc-test-reporter
+            fi
+      - save_cache:
+          <<: *reporter_cache_key
+          paths:
+            - cc-test-reporter
       - run:
           name: Run tests
           command: |
-            ./cc-test-reporter before-build
             yarn test
-            ./cc-test-reporter after-build
+      - run:
+          name: Upload Coverage
+          command: |
+            for f in packages/*; do
+              if [ -d $f ]; then
+                echo $f;
+                ./cc-test-reporter format-coverage -t lcov -o coverage/coverage.${f//\//-}.json $f/coverage/lcov.info;
+              fi
+            done;
+            ./cc-test-reporter sum-coverage -o coverage/coverage.total.json coverage/coverage.*.json;
+            ./cc-test-reporter upload-coverage -i coverage/coverage.total.json;
 
   lint:
     <<: *container_config
