@@ -51,12 +51,16 @@ jobs:
           paths:
             - node_modules
 
-  test:
+  build_and_test:
     <<: *container_config
     steps:
       - checkout
       - *attach_workspace
       - *restore_node_modules
+      - run:
+          name: Build
+          command: |
+            yarn build
       - run:
           name: Create timestamp file
           command: |
@@ -100,27 +104,14 @@ jobs:
           name: Lint
           command: yarn lint
 
-  build:
-    <<: *container_config
-    steps:
-      - checkout
-      - *attach_workspace
-      - *restore_node_modules
-      - run:
-          name: Compile the App
-          command: yarn build
-
 workflows:
   version: 2
   build_and_test:
     jobs:
       - dependencies
-      - test:
+      - build_and_test:
           requires:
             - dependencies
       - lint:
-          requires:
-            - dependencies
-      - build:
           requires:
             - dependencies
