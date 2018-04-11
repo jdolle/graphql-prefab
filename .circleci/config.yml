@@ -20,7 +20,7 @@ references:
       command: mv /tmp/workspace/node_modules .
 
   modules_cache_key: &modules_cache_key
-    key: yarnlock-cache-{{ checksum "yarn.lock" }}
+    key: v1-cache-{{ checksum "yarn.lock" }}
 
 jobs:
   dependencies:
@@ -35,6 +35,7 @@ jobs:
           command: |
             if [ ! -d node_modules ]; then
               yarn
+              yarn dependencies
             fi
       - save_cache:
           <<: *modules_cache_key
@@ -55,16 +56,37 @@ jobs:
       - *attach_workspace
       - *restore_node_modules
       - run:
+          name: Create timestamp file
+          command: |
+            echo "$(date +%Y%m)" > _timestamp_file
+      - restore_cache:
+          key: v1-reporter-{{ checksum "_timestamp_file" }}
+      - run:
           name: Setup Code Climate test-reporter
           command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
+            if [ ! -f cc-test-reporter ]; then
+              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+              chmod +x ./cc-test-reporter
+            fi
+      - save_cache:
+          key: v1-reporter-{{ checksum "_timestamp_file" }}
+          paths:
+            - cc-test-reporter
       - run:
           name: Run tests
           command: |
-            ./cc-test-reporter before-build
-            yarn test:ci
-            ./cc-test-reporter after-build
+            yarn test
+      - run:
+          name: Upload Coverage
+          command: |
+            for f in packages/*; do
+              if [ -d $f ]; then
+                echo $f;
+                ./cc-test-reporter format-coverage -t lcov -o coverage/coverage.${f//\//-}.json $f/coverage/lcov.info;
+              fi
+            done;
+            ./cc-test-reporter sum-coverage -o coverage/coverage.total.json coverage/coverage.*.json;
+            ./cc-test-reporter upload-coverage -i coverage/coverage.total.json;
 
   lint:
     <<: *container_config
