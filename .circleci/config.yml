@@ -4,8 +4,6 @@ references:
   container_config: &container_config
     docker:
       - image: circleci/node:9.10
-        environment:
-          REPORTER_CACHE_TIMESTAMP: "`date +%Y-%m`"
     environment:
       TZ: "/usr/share/zoneinfo/America/Los_Angeles"
 
@@ -23,9 +21,6 @@ references:
 
   modules_cache_key: &modules_cache_key
     key: v1-cache-{{ checksum "yarn.lock" }}
-
-  reporter_cache_key: &reporter_cache_key
-    key: v1-reporter-{{ .Environment.REPORTER_CACHE_TIMESTAMP }}
 
 jobs:
   dependencies:
@@ -60,8 +55,12 @@ jobs:
       - checkout
       - *attach_workspace
       - *restore_node_modules
+      - run:
+          name: Create timestamp file
+          command: |
+            echo "$(date +%Y%m)" > _timestamp_file
       - restore_cache:
-          <<: *reporter_cache_key
+          key: v1-reporter-{{ checksum "_timestamp_file" }}
       - run:
           name: Setup Code Climate test-reporter
           command: |
@@ -70,7 +69,7 @@ jobs:
               chmod +x ./cc-test-reporter
             fi
       - save_cache:
-          <<: *reporter_cache_key
+          key: v1-reporter-{{ checksum "_timestamp_file" }}
           paths:
             - cc-test-reporter
       - run:
