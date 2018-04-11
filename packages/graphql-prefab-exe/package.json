@@ -1,0 +1,16 @@
+{
+  "name": "graphql-prefab-exe",
+  "version": "0.0.2",
+  "description": "A bundled, standalone language-agnostic GraphQL server",
+  "private": true,
+  "repository": "https://github.com/jdolle/graphql-prefab",
+  "author": "Jeff Dolle (jdolle@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-prefab-server": "^0.0.2",
+    "nexe": "^2.0.0-rc.26"
+  },
+  "scripts": {
+    "build": "nexe ./src/index.js -o ./graphql-prefab.exe"
+  }
+}

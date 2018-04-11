@@ -2,21 +2,21 @@
 	"name": "graphql-prefab",
 	"private": true,
 	"workspaces": [
-    "packages/*"
-  ],
+		"packages/*"
+	],
 	"repository": {
-    "type": "git",
-    "url": "github.com/jdolle/graphql-prefab"
-  },
-  "author": "Jeff Dolle (jdolle@gmail.com)",
-  "license": "MIT",
+		"type": "git",
+		"url": "github.com/jdolle/graphql-prefab"
+	},
+	"author": "Jeff Dolle (jdolle@gmail.com)",
+	"license": "MIT",
 	"devDependencies": {
 		"lerna": "^2.10.1"
 	},
 	"scripts": {
-		"dependencies": "lerna exec -- yarn && lerna bootstrap",
-		"test": "lerna run test",
-		"lint": "lerna run lint",
-		"build": "lerna run build"
+		"bootstrap": "yarn && lerna bootstrap",
+		"test": "lerna run -- test",
+		"lint": "lerna run -- lint",
+		"build": "lerna exec -- yarn build"
 	}
 }
