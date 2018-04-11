@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios, { AxiosRequestConfig, AxiosProxyConfig } from 'axios'
 
 export interface HttpConfig extends ResolverConfig {
   use: 'http',
@@ -12,7 +12,7 @@ export interface HttpConfig extends ResolverConfig {
     timeout?: AxiosRequestConfig['timeout'];
     baseURL?: AxiosRequestConfig['baseURL'];
     withCredentials?: AxiosRequestConfig['withCredentials'];
-    proxy?: AxiosRequestConfig['proxy'];
+    proxy?: AxiosProxyConfig | false;
     maxRedirects?: AxiosRequestConfig['maxRedirects'];
     maxContentLength?: AxiosRequestConfig['maxContentLength'];
     xsrfCookieName?: AxiosRequestConfig['xsrfCookieName'];
