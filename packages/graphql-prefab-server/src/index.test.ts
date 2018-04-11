@@ -4,7 +4,7 @@ import { importSchema } from 'graphql-import'
 import start from './index'
 
 jest.mock('graphql-yoga', () => {
-  const mockStart = jest.fn().mockResolvedValue(undefined)
+  const mockStart = jest.fn().mockImplementation(cb => cb())
 
   return {
     PubSub: mockStart, // hacky workaround for typescript and mock exports
