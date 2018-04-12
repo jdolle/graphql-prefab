@@ -7,12 +7,14 @@
   "author": "Jeff Dolle (jdolle@gmail.com)",
   "license": "MIT",
   "dependencies": {
-    "graphql-prefab-server": "^0.0.2",
+    "graphql-prefab-server": "^0.0.2"
+  },
+  "devDependencies": {
     "nexe": "^2.0.0-rc.26"
   },
   "scripts": {
     "build": "nexe ./src/index.js -o ./graphql-prefab.exe",
     "build:linux-x64": "nexe ./src/index.js -t linux-x64-9.5.0 -o ./graphql-prefab.linux-x64-9.5.0",
-    "postinstall": "nexe ./src/index.js -o ./graphql-prefab.exe"
+    "prepublish": "nexe ./src/index.js -o ./graphql-prefab.exe"
   }
 }

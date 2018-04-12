@@ -14,7 +14,7 @@
 		"lerna": "^2.10.1"
 	},
 	"scripts": {
-		"bootstrap": "yarn && lerna bootstrap",
+		"bootstrap": "yarn install --pure-lockfile",
 		"test": "lerna run -- test",
 		"lint": "lerna run -- lint",
 		"build": "lerna exec -- yarn build"
