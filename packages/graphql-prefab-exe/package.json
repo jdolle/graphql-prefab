@@ -11,6 +11,8 @@
     "nexe": "^2.0.0-rc.26"
   },
   "scripts": {
-    "build": "nexe ./src/index.js -o ./graphql-prefab.exe"
+    "build": "yarn build:platform",
+    "build:linux-x64": "nexe ./src/index.js -t linux-x64-9.5.0 -o ./graphql-prefab.linux-x64-9.5.0",
+    "build:platform": "nexe ./src/index.js -o ./graphql-prefab.exe"
   }
 }
