@@ -21,7 +21,7 @@ references:
         mv /tmp/workspace/node_modules .
 
   modules_cache_key: &modules_cache_key
-    key: v1-cache-{{ checksum "yarn.lock" }}
+    key: v1-modules-{{ checksum "yarn.lock" }}
 
 jobs:
   dependencies:
