@@ -19,9 +19,10 @@ references:
       name: Restore dependencies from workspace
       command: |
         mv /tmp/workspace/node_modules .
+        yarn
 
   modules_cache_key: &modules_cache_key
-    key: v2-modules-{{ checksum "yarn.lock" }}
+    key: v3-modules-{{ checksum "yarn.lock" }}
 
 jobs:
   dependencies:
@@ -35,8 +36,7 @@ jobs:
           name: Install dependencies
           command: |
             if [ ! -d node_modules ]; then
-              yarn
-              yarn bootstrap
+              yarn install
             fi
       - save_cache:
           <<: *modules_cache_key
