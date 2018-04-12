@@ -21,7 +21,7 @@ references:
         mv /tmp/workspace/node_modules .
 
   modules_cache_key: &modules_cache_key
-    key: v1-modules-{{ checksum "yarn.lock" }}
+    key: v2-modules-{{ checksum "yarn.lock" }}
 
 jobs:
   dependencies:
@@ -35,6 +35,7 @@ jobs:
           name: Install dependencies
           command: |
             if [ ! -d node_modules ]; then
+              yarn
               yarn bootstrap
             fi
       - save_cache:
