@@ -16,10 +16,9 @@ references:
 
   restore_node_modules: &restore_node_modules
     run:
-      name: Restore from workspace then bootstrap NPM dependencies
+      name: Restore dependencies from workspace
       command: |
         mv /tmp/workspace/node_modules .
-        yarn bootstrap
 
   modules_cache_key: &modules_cache_key
     key: v1-cache-{{ checksum "yarn.lock" }}
