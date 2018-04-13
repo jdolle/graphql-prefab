@@ -1,6 +1,11 @@
 # graphql-prefab-resolvers
 > Reduce resolver boilerplate by configuring resolvers through JSON
 
+## Installation
+```
+yarn add graphql-prefab-resolvers
+```
+
 ## Usage
 ```javascript
 import { compile } from 'graphql-prefab-resolvers'
