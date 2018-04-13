@@ -1,5 +1,17 @@
 {
   "lerna": "2.10.1",
+  "changelog": {
+    "repo": "jdolle/graphql-prefab",
+    "labels": {
+      ":eyeglasses: Spec Compliancy": ":eyeglasses: Spec Compliancy",
+      ":boom: Breaking Change": ":boom: Breaking Change",
+      ":rocket: New Feature": ":rocket: New Feature",
+      ":bug: Bug Fix": ":bug: Bug Fix",
+      ":nail_care: Polish": ":nail_care: Polish",
+      ":memo: Documentation": ":memo: Documentation",
+      ":house: Internal": ":house: Internal"
+    }
+  },
   "packages": [
     "packages/*"
   ],
