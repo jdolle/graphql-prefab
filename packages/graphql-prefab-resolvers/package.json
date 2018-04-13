@@ -20,7 +20,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist/* && tsc",
-    "demo": "BACKEND_URL=https://backend.staging.acorns.io ts-node-dev --respawn --type-check ./examples/demo-server/index.ts",
+    "demo": "BACKEND_URL=https://backend.staging.acorns.io ts-node-dev --respawn --type-check ./examples/demo-server/src/index.ts",
     "lint": "tslint --project tsconfig.json --format stylish \"src/**\"",
     "test": "jest --no-watchman"
   },
