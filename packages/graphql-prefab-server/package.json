@@ -1,6 +1,6 @@
 {
   "name": "graphql-prefab-server",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A language-agnostic, standalone GraphQL server",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
