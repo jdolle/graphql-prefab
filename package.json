@@ -14,7 +14,7 @@
 		"lerna": "^2.10.1"
 	},
 	"scripts": {
-		"publish": "lerna publish --conventional-commits",
+		"ship": "lerna publish --conventional-commits",
 		"test": "lerna run -- test",
 		"lint": "lerna run -- lint",
 		"build": "lerna exec -- yarn build"
