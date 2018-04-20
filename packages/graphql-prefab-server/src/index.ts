@@ -3,6 +3,12 @@ import { importSchema } from 'graphql-import'
 import { compile } from 'graphql-prefab-resolvers'
 import path from 'path'
 
+const PREFAB_GQL_PORT = process.env.PREFAB_GQL_PORT === undefined ?
+  '4000' : process.env.PREFAB_GQL_PORT
+
+const PREFAB_GQL_ENDPOINT = process.env.PREFAB_GQL_ENDPOINT === undefined ?
+  '/' : process.env.PREFAB_GQL_ENDPOINT
+
 const PREFAB_SCHEMA_PATH = process.env.PREFAB_SCHEMA_PATH === undefined ?
   './types/Query.graphql' : process.env.PREFAB_SCHEMA_PATH
 
@@ -17,8 +23,12 @@ const start = async () => {
     resolvers,
   })
 
-  await server.start(() => {
-    console.log('Server is running on localhost:4000')
+  server.express.get('/health', (req, res) => {
+    res.send('OK')
+  })
+
+  await server.start({ endpoint: PREFAB_GQL_ENDPOINT, port: PREFAB_GQL_PORT }, () => {
+    console.log(`Server is running on localhost:${PREFAB_GQL_PORT}`)
   })
 }
 

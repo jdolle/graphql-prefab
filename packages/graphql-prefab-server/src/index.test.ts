@@ -4,12 +4,15 @@ import { importSchema } from 'graphql-import'
 import start from './index'
 
 jest.mock('graphql-yoga', () => {
-  const mockStart = jest.fn().mockImplementation(cb => cb())
+  const mockStart = jest.fn().mockImplementation((config, cb) => cb())
 
   return {
     PubSub: mockStart, // hacky workaround for typescript and mock exports
     GraphQLServer: jest.fn().mockImplementation(() => ({
       start: mockStart,
+      express: {
+        get: jest.fn(),
+      },
     })),
   }
 })
