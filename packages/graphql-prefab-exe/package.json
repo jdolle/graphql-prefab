@@ -14,7 +14,6 @@
   },
   "scripts": {
     "build": "nexe ./src/index.js -o ./graphql-prefab.exe",
-    "build:linux-x64": "nexe ./src/index.js -t linux-x64-9.5.0 -o ./graphql-prefab.linux-x64-9.5.0",
-    "prepublish": "nexe ./src/index.js -o ./graphql-prefab.exe"
+    "build:linux-x64": "nexe ./src/index.js -t linux-x64-9.5.0 -o ./graphql-prefab.linux-x64-9.5.0"
   }
 }
