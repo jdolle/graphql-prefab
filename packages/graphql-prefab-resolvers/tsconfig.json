@@ -2,10 +2,6 @@
   "compilerOptions": {
     "rootDir": "./src",
     "baseUrl": "./src",
-    "paths": {
-      "$src/*": ["./*"],
-      "$lib/*": ["./lib/*"]
-    },
     "outDir": "./dist",
     "declaration": true,
     "target": "ES6",

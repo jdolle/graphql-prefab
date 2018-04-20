@@ -1,5 +1,5 @@
 import { Pool, QueryConfig } from 'pg'
-import firstDefined from '$lib/firstDefined'
+import firstDefined from '../lib/firstDefined'
 
 export interface PGConfig extends ResolverConfig {
   use: 'postgres',

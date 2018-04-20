@@ -68,10 +68,6 @@
       "node_modules",
       "./src"
     ],
-    "moduleNameMapper": {
-      "\\$src/(.*)$": "<rootDir>/src/$1",
-      "\\$lib/(.*)$": "<rootDir>/src/lib/$1"
-    },
     "moduleFileExtensions": [
       "ts",
       "tsx",

@@ -17,6 +17,7 @@
 		"ship": "lerna publish --conventional-commits",
 		"test": "lerna run -- test",
 		"lint": "lerna run -- lint",
-		"build": "lerna exec -- yarn build"
+		"build": "lerna exec -- yarn build",
+		"prepublish": "lerna exec -- yarn build"
 	}
 }
