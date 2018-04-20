@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/jdolle/graphql-prefab/compare/v0.2.0...v0.2.1) (2018-04-20)
+
+
+### Bug Fixes
+
+* cannot find /firstDefined ([665dac4](https://github.com/jdolle/graphql-prefab/commit/665dac4))
+
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/jdolle/graphql-prefab/compare/v0.1.0...v0.2.0) (2018-04-20)
 

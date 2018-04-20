@@ -1,7 +1,7 @@
 {
   "name": "graphql-prefab-resolvers",
   "description": "Reduce resolver boilerplate by configuring resolvers through JSON",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "keywords": [

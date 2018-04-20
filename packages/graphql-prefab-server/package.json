@@ -1,6 +1,6 @@
 {
   "name": "graphql-prefab-server",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A language-agnostic, standalone GraphQL server",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "graphql-import": "^0.5.0",
-    "graphql-prefab-resolvers": "^0.1.0",
+    "graphql-prefab-resolvers": "^0.2.1",
     "graphql-yoga": "^1.8.4",
     "tslib": "^1.9.0"
   },
