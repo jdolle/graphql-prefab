@@ -1,6 +1,6 @@
 # graphql-prefab
 
-[![CircleCI](https://circleci.com/gh/jdolle/graphql-prefab.svg?style=svg)](https://circleci.com/gh/jdolle/graphql-prefab) [![Test Coverage](https://api.codeclimate.com/v1/badges/da06c7682572accb0831/test_coverage)](https://codeclimate.com/github/jdolle/graphql-prefab/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/da06c7682572accb0831/maintainability)](https://codeclimate.com/github/jdolle/graphql-prefab/maintainability) [![Greenkeeper badge](https://badges.greenkeeper.io/jdolle/graphql-prefab.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/jdolle/graphql-prefab.svg?style=shield)](https://circleci.com/gh/jdolle/graphql-prefab) [![Test Coverage](https://api.codeclimate.com/v1/badges/da06c7682572accb0831/test_coverage)](https://codeclimate.com/github/jdolle/graphql-prefab/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/da06c7682572accb0831/maintainability)](https://codeclimate.com/github/jdolle/graphql-prefab/maintainability) [![Greenkeeper badge](https://badges.greenkeeper.io/jdolle/graphql-prefab.svg)](https://greenkeeper.io/)
 
 See individual [packages](https://github.com/jdolle/graphql-prefab/tree/master/packages) for more details.
 - [graphql-prefab-exe](https://github.com/jdolle/graphql-prefab/tree/master/packages/graphql-prefab-exe) - a bundled, standalone language-agnostic GraphQL application
