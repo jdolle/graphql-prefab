@@ -1,0 +1,12 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/graphql-prefab-exe/package.json",
+        "packages/graphql-prefab-resolvers/package.json",
+        "packages/graphql-prefab-server/package.json"
+      ]
+    }
+  }
+}
