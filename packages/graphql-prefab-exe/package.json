@@ -10,7 +10,7 @@
     "graphql-prefab-server": "^0.2.1"
   },
   "devDependencies": {
-    "nexe": "^2.0.0-rc.26"
+    "nexe": "^2.0.0-rc.29"
   },
   "scripts": {
     "build": "nexe ./src/index.js -o ./graphql-prefab.exe",
