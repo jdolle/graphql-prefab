@@ -5796,7 +5796,7 @@ ts-jest@^22.4.2:
     source-map-support "^0.5.5"
     yargs "^11.0.0"
 
-ts-node-dev@^1.0.0-pre.18, ts-node-dev@^1.0.0-pre.26:
+ts-node-dev@^1.0.0-pre.26:
   version "1.0.0-pre.26"
   resolved "https://registry.yarnpkg.com/ts-node-dev/-/ts-node-dev-1.0.0-pre.26.tgz#3a8491921129dea89525c97e5212023207f6c1fc"
   dependencies:
@@ -6072,7 +6072,7 @@ vary@^1, vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
 
-velocityjs@^1.0.1:
+velocityjs@^1.0.1, velocityjs@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/velocityjs/-/velocityjs-1.0.2.tgz#84a08490116e5de63df31dc63da9b8a7ef63f031"
 
