@@ -21,21 +21,21 @@
     "test": "jest --no-watchman"
   },
   "devDependencies": {
-    "@types/node": "^10.1.1",
-    "@types/ws": "^5.1.0",
+    "@types/node": "10.0.4",
+    "@types/ws": "^5.1.2",
     "jest": "^22.4.3",
     "rimraf": "^2.6.2",
     "ts-jest": "^22.4.2",
     "tslint": "^5.9.1",
     "tslint-consistent-codestyle": "^1.13.0",
     "tslint-microsoft-contrib": "^5.0.3",
-    "typescript": "^2.8.1"
+    "typescript": "^2.9.1"
   },
   "dependencies": {
     "graphql-import": "^0.6.0",
     "graphql-prefab-resolvers": "^0.2.1",
-    "graphql-yoga": "^1.13.1",
-    "tslib": "^1.9.0"
+    "graphql-yoga": "^1.14.7",
+    "tslib": "^1.9.2"
   },
   "jest": {
     "cacheDirectory": "jestCache",
