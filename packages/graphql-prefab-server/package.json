@@ -21,7 +21,7 @@
     "test": "jest --no-watchman"
   },
   "devDependencies": {
-    "@types/node": "10.0.4",
+    "@types/node": "10.5.0",
     "@types/ws": "^5.1.2",
     "jest": "^22.4.3",
     "rimraf": "^2.6.2",
