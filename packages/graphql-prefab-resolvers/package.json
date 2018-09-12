@@ -31,7 +31,7 @@
     "@types/node": "10.0.4",
     "@types/pg": "^7.4.5",
     "@types/ramda": "^0.25.34",
-    "graphql-import": "^0.6.0",
+    "graphql-import": "^0.7.1",
     "graphql-yoga": "^1.14.7",
     "jest": "^22.4.3",
     "moxios": "^0.4.0",
