@@ -28,7 +28,7 @@
     "@types/humps": "^1.1.2",
     "@types/jest": "^23.1.4",
     "@types/moxios": "^0.4.8",
-    "@types/node": "10.0.4",
+    "@types/node": "10.11.3",
     "@types/pg": "^7.4.5",
     "@types/ramda": "^0.25.34",
     "graphql-import": "^0.6.0",
