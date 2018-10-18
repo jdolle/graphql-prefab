@@ -34,7 +34,7 @@
   "dependencies": {
     "graphql-import": "^0.6.0",
     "graphql-prefab-resolvers": "^0.2.1",
-    "graphql-yoga": "^1.14.7",
+    "graphql-yoga": "^1.16.7",
     "tslib": "^1.9.2"
   },
   "jest": {
