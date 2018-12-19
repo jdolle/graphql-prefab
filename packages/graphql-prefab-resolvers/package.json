@@ -32,7 +32,7 @@
     "@types/pg": "^7.4.5",
     "@types/ramda": "^0.26.0",
     "graphql-import": "^0.7.1",
-    "graphql-yoga": "^1.14.7",
+    "graphql-yoga": "^1.16.9",
     "jest": "^22.4.3",
     "moxios": "^0.4.0",
     "rimraf": "^2.6.2",
