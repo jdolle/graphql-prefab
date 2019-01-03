@@ -11,7 +11,7 @@
 	"author": "Jeff Dolle (jdolle@gmail.com)",
 	"license": "MIT",
 	"devDependencies": {
-		"lerna": "^2.10.1"
+		"lerna": "^3.8.2"
 	},
 	"scripts": {
 		"ship": "lerna exec -- yarn build && lerna publish --conventional-commits",
